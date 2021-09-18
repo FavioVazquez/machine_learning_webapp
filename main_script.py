@@ -253,7 +253,7 @@ if __name__ == '__main__':
 
 
     if controller.data is not None and len(controller.features) > 1:
-        controller.plot_result()
+
         if predict_btn:
             st.sidebar.text("Progress:")
             my_bar = st.sidebar.progress(0)
@@ -261,7 +261,7 @@ if __name__ == '__main__':
             for percent_complete in range(100):
                 my_bar.progress(percent_complete + 1)
 
-            
+            controller.plot_result()
             controller.get_metrics()        
             controller.print_table()
 
