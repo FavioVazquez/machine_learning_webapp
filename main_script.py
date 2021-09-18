@@ -236,6 +236,7 @@ class Predictor:
 
 if __name__ == '__main__':
     controller = Predictor()
+    controller.plot_result()
     try:
         controller.data = controller.file_selector()
 
@@ -259,7 +260,6 @@ if __name__ == '__main__':
             my_bar.progress(percent_complete + 1)
 
         controller.get_metrics()        
-        controller.plot_result()
         controller.print_table()
 
         data = controller.result.to_csv(index=False)
