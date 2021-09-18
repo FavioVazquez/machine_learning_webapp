@@ -236,7 +236,7 @@ class Predictor:
 
 if __name__ == '__main__':
     controller = Predictor()
-    controller.plot_result()
+    
     try:
         controller.data = controller.file_selector()
 
@@ -253,19 +253,22 @@ if __name__ == '__main__':
 
 
     if controller.data is not None and len(controller.features) > 1:
-        st.sidebar.text("Progress:")
-        my_bar = st.sidebar.progress(0)
-        predictions, predictions_train, result, result_train = controller.predict(predict_btn)
-        for percent_complete in range(100):
-            my_bar.progress(percent_complete + 1)
+        controller.plot_result()
+        if predict_btn:
+            st.sidebar.text("Progress:")
+            my_bar = st.sidebar.progress(0)
+            predictions, predictions_train, result, result_train = controller.predict(predict_btn)
+            for percent_complete in range(100):
+                my_bar.progress(percent_complete + 1)
 
-        controller.get_metrics()        
-        controller.print_table()
+            
+            controller.get_metrics()        
+            controller.print_table()
 
-        data = controller.result.to_csv(index=False)
-        b64 = base64.b64encode(data.encode()).decode()  # some strings <-> bytes conversions necessary here
-        href = f'<a href="data:file/csv;base64,{b64}">Download Results</a> (right-click and save as &lt;some_name&gt;.csv)'
-        st.sidebar.markdown(href, unsafe_allow_html=True)
+            data = controller.result.to_csv(index=False)
+            b64 = base64.b64encode(data.encode()).decode()  # some strings <-> bytes conversions necessary here
+            href = f'<a href="data:file/csv;base64,{b64}">Download Results</a> (right-click and save as &lt;some_name&gt;.csv)'
+            st.sidebar.markdown(href, unsafe_allow_html=True)
 
 
     
