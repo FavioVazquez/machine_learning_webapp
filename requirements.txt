@@ -6,3 +6,4 @@ sklearn
 matplotlib
 keras==2.3.1
 tensorflow
+graphviz
