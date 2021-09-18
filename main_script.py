@@ -34,6 +34,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 import time
 
+st.image("https://www.isb.edu/content/dam/sites/isb/about-isb/ISB_transparent_logo.png", width=400)
 
 st.title('Machine Learning Predictor')
 
