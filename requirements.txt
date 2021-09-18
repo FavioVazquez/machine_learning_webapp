@@ -7,4 +7,4 @@ matplotlib
 keras==2.3.1
 tensorflow
 graphviz
-bokeh
+bokeh==2.0.0
